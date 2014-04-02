@@ -1,0 +1,71 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false">
+    <diskStore path="java.io.tmpdir"/>
+
+    <!-- objects are evicted from the cache every 60 seconds -->
+    <cache name="vets"
+           timeToLiveSeconds="60"
+           maxElementsInMemory="100"
+           eternal="false"
+           overflowToDisk="false"
+           maxElementsOnDisk="10000000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1"
+           memoryStoreEvictionPolicy="LRU"/>
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+            diskSpoolBufferSizeMB="30"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="defaultCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"           
+           overflowToDisk="false"
+           diskPersistent="false"
+           memoryStoreEvictionPolicy="FIFO"
+            />
+   
+    <cache name="SimplePageCachingFilter"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" />
+           
+    <cache name="PageCachingFilter"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" />
+           
+           
+    <cache name="SessionPageCachingFilter"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="15"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" />
+           
+           
+    <cache name="SessionSubmissionCachingFilter"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="2"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" />
+</ehcache>
